@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Spotify → COMMAND</title>
+</head>
+
+<body>
+  <p>Returning to COMMAND…</p>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+
+    const code = params.get("code");
+    const state = params.get("state");
+    const error = params.get("error");
+
+    let target =
+      "scriptable:///run?scriptName=Spotify%20Callback";
+
+    if (code) {
+      target += "&code=" + encodeURIComponent(code);
+    }
+
+    if (state) {
+      target += "&state=" + encodeURIComponent(state);
+    }
+
+    if (error) {
+      target += "&error=" + encodeURIComponent(error);
+    }
+
+    window.location.href = target;
+  </script>
+</body>
+</html>
